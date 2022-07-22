@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize';
 import db from '../../config/db';
-import log from '../../config/logging';
 
 const MODEL_NAME = 'example';
 const TABLE_NAME = 'example';
@@ -22,8 +21,7 @@ const example = db.define(
   },
 );
 
-example.sync().then(() => {
-  log.info(`Table '${TABLE_NAME}' created successfully`);
-});
+// This function creates the Table, if not exist.
+example.sync();
 
 export default example;
