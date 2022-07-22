@@ -6,11 +6,15 @@ import log from './src/config/logging';
 import db, { connectToPostgres } from './src/config/db';
 
 import exRouter from './src/routes/example';
+import { startAllJobs } from './src/jobs';
 
 const app = express();
 
 // DB-Connection
 connectToPostgres(db);
+
+// start scheduled Jobs
+startAllJobs();
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
